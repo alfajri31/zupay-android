@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'dart:developer';
 
 void main() {
   runApp(const Homepage());
@@ -11,7 +12,9 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Content(),);
+    return const MaterialApp(
+      home: Content(),
+    );
   }
 }
 
@@ -20,9 +23,18 @@ class Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: HexColor("#634BFF"));
+    Size size = MediaQuery.of(context).size;
+    log('data: $size');
+    return Container(
+      width: size.width,
+      height: size.height,
+      color: HexColor("634BFF"),
+      alignment: Alignment.bottomCenter, // where to position the child
+      child: Container(
+        width: size.width,
+        height: size.height*0.5,
+        color: Colors.white,
+      ),
+    );
   }
 }
-
-
-
